@@ -1,0 +1,34 @@
+From c94be929b91c176c1b826f8f07be206dff526c39 Mon Sep 17 00:00:00 2001
+From: Miguel Angel Cano <ergocano@gmail.com>
+Date: Wed, 25 Jan 2012 17:12:52 +0100
+Subject: [PATCH] My first theme
+
+---
+ themes/ergocano.zsh-theme |   15 +++++++++++++++
+ 1 files changed, 15 insertions(+), 0 deletions(-)
+ create mode 100644 themes/ergocano.zsh-theme
+
+diff --git a/themes/ergocano.zsh-theme b/themes/ergocano.zsh-theme
+new file mode 100644
+index 0000000..7e07749
+--- /dev/null
++++ b/themes/ergocano.zsh-theme
+@@ -0,0 +1,15 @@
++function prompt_char {
++    git branch >/dev/null 2>/dev/null && echo '±' && return
++    hg root >/dev/null 2>/dev/null && echo '☿' && return
++    echo '○'
++}
++
++PROMPT='
++$fg_bold[red]%n $fg_bold[white]de $fg_bold[blue]%m $fg_bold[white]en $fg[yellow]%d$(git_prompt_info)$fg[yellow]$(rvm_prompt_info)$reset_color
++$(prompt_char) '
++
++# git theming
++ZSH_THEME_GIT_PROMPT_PREFIX="$fg_bold[green]("
++ZSH_THEME_GIT_PROMPT_SUFFIX=")"
++ZSH_THEME_GIT_PROMPT_CLEAN="✔"
++ZSH_THEME_GIT_PROMPT_DIRTY="✗"
+-- 
+1.7.2.5
+
